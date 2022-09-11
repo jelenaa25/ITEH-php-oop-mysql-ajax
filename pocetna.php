@@ -1,10 +1,11 @@
 <?php
     include 'dbbroker.php';  
     include 'model/Nakit.php';  
-   
+    include 'model/Kategorija.php';
     //da bismo mogli da prikazemo sav nakit u tabeli moramo da prvo procitamo sve podatke o svom nakitu iz baze
     $savNakit = Nakit::vratiSavnakit($conn); //rezultat ovog upita cemo prikazati u tabeli dole
   
+    $kategorije = Kategorija::vratiSveKategorije($conn); //potrebno da bismo mogli da ucitamo sve kategorije u modalu za izmenu 
      
 
 ?>
@@ -48,7 +49,7 @@
                         <td>   
 
                         <form  method="post">
-                            <button type="button" class="btn btn-success"   >    <i class="fas fa-pencil-alt"></i> </button> 
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal" onclick="azurirajNakit(<?php echo   $red['id'];?>)" >    <i class="fas fa-pencil-alt"></i> </button> 
                             <button type="button" class="btn btn-danger"   onclick="obrisinakit(<?php echo   $red['id'];?>)"> <i class="fas fa-trash"></i> </button>  
                            
                         </form>
@@ -63,6 +64,95 @@
  
   </tbody>
 </table>
+
+
+
+
+
+
+<!-- edit form modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Izmena nakita</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     
+
+
+      <form   class="sign-in-form" id="editform" name="editform" method="POST" enctype="multipart/form-data" >
+        <div class="modal-body">
+           
+      
+
+        
+         
+        <div class="input-field">
+            <i class="fa fa-diamond"></i>
+            <input type="text" placeholder="Naziv.." name="nazivEdit" id="nazivEdit" required />
+        </div>
+        <div class="input-field">
+            <i class="fa fa-pencil"></i>
+            <input type="text" placeholder="Opis.." name="opisEdit" id="opisEdit" required />
+        </div>
+        <div style="font-size:20px" >
+            <label for="kategorijeEdit">Odaberi kategoriju</label>
+            <select name="kategorijeEdit" id="kategorijeEdit">
+            <?php    while($red = $kategorije->fetch_array()):            ?>
+                  <option value=<?php echo $red["id_kat"]?>><?php echo $red["naziv_kat"]?></option> 
+
+                <?php   endwhile;   ?>
+            </select>
+        </div>
+        <div class="input-field">
+            <i class="fas fa-tag"></i>
+            <input type="text" placeholder="Cena.." name="cenaEdit" id="cenaEdit" required />
+        </div>
+       <br>
+     
+        <div style="font-size:20px;margin:0px"> 
+       
+            <!-- Dodajemo ovde jedno skriveno polje da bismo sacuvali id nakita koji azuriramo da bismo kasnije taj id mogli da koristimo u edit.php -->
+            <input type="text" name="sakrivenoPoljeID" id="sakrivenoPoljeID" readonly>
+ 
+ 
+        </div> 
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success" id="editButton" >Submit</button> 
+        </div>
+ 
+
+      </form>
+    </div>
+  </div>
+</div>
+<!-- edit form modal end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
