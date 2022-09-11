@@ -21,9 +21,38 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+    <style>
+        
+        /* Modify the background color navbara */
+         
+        .navbar-custom {
+            background-color:  #ff6fb7;
+        }
+        /* Modify brand and text color navbara */
+         
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: Black;
+        }
+
+    </style>
 </head>
 <body>
+     <!-- Image and text -->
+  <nav class="navbar navbar-custom"  >
+    <a class="navbar-brand" href="#">
+        <img src="images/diamond.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Zlatara <strong> <i>
+            Silver
+        </strong></i>
+    </a> 
+    <div>
+        <a class="nav-link" href="pocetna.php" style="color:black;text-decoration: none;float:left"><strong>Pocetna</strong> </a>
+        <a class="nav-link" href="dodajnovinakit.php" style="color:black;text-decoration: none;float:left"><strong>Dodaj novi nakit</strong> </a>
+
+        <a   class="nav-link" href="odjava.php" style="color:black;text-decoration: none;float:right">Odjava</a>
+    </div>
+    </nav>
 <table class="table table-hover">
   <thead>
     <tr>
