@@ -1,3 +1,7 @@
+<?php
+
+    include 'loginregister.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +27,11 @@
                 <h2 class="title">Sign in</h2>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="email" placeholder="Email" name="email"  required />
+                    <input type="email" placeholder="Email" name="email" id="email"  required />
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Lozinka" name="lozinka"  required />
+                    <input type="password" placeholder="Lozinka" name="lozinka"  id="lozinka"  required />
                 </div>
           
             <input type="submit" value="Login" name="login" id = "login" class="btn solid"  />
