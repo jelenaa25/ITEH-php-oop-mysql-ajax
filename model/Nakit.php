@@ -10,7 +10,7 @@
 
         public function __construct($id=null,$naziv=null,$opis=null,$cena=null,$kategorija=null)
         {
-            $this->idNakita=$id;
+            $this->id=$id;
             $this->naziv=$naziv;
             $this->opis=$opis;
             $this->cena=$cena; 
@@ -38,7 +38,7 @@
         }
         public static function azurirajNakit($nakit, $conn){
             $upit = "update nakit set naziv='$nakit->naziv',opis='$nakit->opis',cena=$nakit->cena ,kategorija=$nakit->kategorija where id = $nakit->id";
-            
+    
             return $conn->query($upit);
         }
   
