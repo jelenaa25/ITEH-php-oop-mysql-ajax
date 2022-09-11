@@ -49,11 +49,29 @@
     <div>
         <a class="nav-link" href="pocetna.php" style="color:black;text-decoration: none;float:left"><strong>Pocetna</strong> </a>
         <a class="nav-link" href="dodajnovinakit.php" style="color:black;text-decoration: none;float:left"><strong>Dodaj novi nakit</strong> </a>
-
+        <input  class="nav-link" type="search" id="pretraga" class="form-control"  style="width:250px;color:black;text-decoration: none;float:left" onkeyup="pretragaPoImenu()"    placeholder="Search.." />
         <a   class="nav-link" href="odjava.php" style="color:black;text-decoration: none;float:right">Odjava</a>
     </div>
-    </nav>
-<table class="table table-hover">
+    </nav><br><br><br>
+    <div      style="margin-left: 25%;margin-right: 25%;">                    
+                       
+                       
+                        <br>
+                      
+                      
+                      <button type="button" class="btn btn-warning"  onclick="sortiraj()">Sortiraj<i class="fa fa-sort" aria-hidden="true" ></i></button>
+                      <select name="kriterijum" id="kriterijum" class="criteria">
+                          <option value="price">Cena</option> 
+                          <option value="name">Naziv</option>
+                    </select>
+
+
+                  
+                 
+          </div>
+          <br><br><br>
+    <div class="container">
+        <table class="table table-hover" name="tableNakit" id="tableNakit">
   <thead>
     <tr>
         <th >ID</th>
@@ -93,7 +111,7 @@
  
   </tbody>
 </table>
-
+</div>
 
 
 
@@ -189,5 +207,7 @@
 
 
                 <script src="js/ajax.js"></script>
+                <script src="js/pretraga_sortiranje.js"></script>
+
 </body>
 </html>
